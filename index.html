@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Application de gestion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header avec un menu -->
+    <header>
+        <nav>
+            <div class="logo">GestionApp</div>
+            <ul class="menu">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#description">Description</a></li>
+                <li><a href="#features">Fonctionnalités</a></li>
+                <li><a href="#account">Compte</a></li>
+                <!-- Ajout du lien Dashboard -->
+                <li><a href="all.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section d'accueil -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bienvenue dans l'Application de gestion</h1>
+            <p>Simplifiez votre gestion d'assurance avec une plateforme intuitive et moderne.</p>
+            <button class="btn-primary" onclick="window.location.href='User.html'">Créer un compte</button>
+        </div>
+    </section>
+
+    <!-- Section de description -->
+    <section id="description" class="description">
+        <h2>À propos de l'application</h2>
+        <p>Notre application offre une solution complète pour gérer vos abonnés, compteurs, sinistres et le suivi administratif.
+           Elle est conçue pour être intuitive, rapide et accessible à tout moment.</p>
+        <div class="photos">
+            <img src="C:\Users\PC-EXPERT\Desktop/list.png" alt="Gestion des abonnés">
+            <img src="C:\Users\PC-EXPERT\Desktop/dashboard.png" alt="Gestion des compteurs">
+            <img src="C:\Users\PC-EXPERT\Desktop/risk.png" alt="Gestion des sinistres">
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Fonctionnalités principales</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <img src="C:\Users\PC-EXPERT\Desktop/subscription.png" alt="Icone abonnés">
+                <h3>Gestion des abonnés</h3>
+                <p>Ajoutez et gérez les informations de vos abonnés facilement.</p>
+            </div>
+            <div class="feature-item">
+                <img src="speedometer.png" alt="Icone compteurs">
+                <h3>Suivi des compteurs</h3>
+                <p>Suivez les relevés des compteurs avec une interface intuitive.</p>
+            </div>
+            <div class="feature-item">
+                <img src="declaration.png" alt="Icone sinistres">
+                <h3>Déclaration des sinistres</h3>
+                <p>Déclarez rapidement vos sinistres avec des outils performants.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section pour créer un compte -->
+    <section id="account" class="account">
+        <h2>Rejoignez-nous dès maintenant</h2>
+        <p>Créez un compte pour accéder à toutes les fonctionnalités de l'application.</p>
+        <button class="btn-secondary" onclick="window.location.href='User.html'">Créer un compte</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 GestionApp. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

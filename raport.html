@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déclaration de Sinistre</title>
+    <link rel="stylesheet" href="raport.css">
+</head>
+<body>
+    <button class="back-button" onclick="goBack()"></button>
+
+    <div class="container">
+        <h1>Déclaration de Sinistre</h1>
+
+        <div class="status">
+            <h2>États de la fiche</h2>
+            <ul>
+                <li><strong>Nouveau:</strong> La fiche vient d'être créée</li>
+                <li><strong>Validée:</strong> Le sinistre est validé par l’assurance, les photos ont été prises</li>
+                <li><strong>En attente de proforma</strong></li>
+                <li><strong>En attente d’expertise</strong></li>
+                <li><strong>Payé:</strong> Dès la remise du chèque</li>
+                <li><strong>Terminée:</strong> La prise des photos après réparation a été faite</li>
+            </ul>
+        </div>
+
+        <div class="upload-section">
+            <h2>Étape 2: Télécharger la Facture Proforma</h2>
+            <form action="#" method="post" enctype="multipart/form-data">
+                <label for="proforma">Télécharger la facture proforma:</label>
+                <input type="file" id="proforma" name="proforma" accept=".pdf, .jpg, .jpeg, .png" required>
+                <button type="submit">Télécharger</button>
+            </form>
+        </div>
+
+        <div class="upload-section">
+            <h2>Expertise et Rapport d’Expertise</h2>
+            <form action="#" method="post" enctype="multipart/form-data">
+                <label for="rapport">Télécharger le rapport d'expertise:</label>
+                <input type="file" id="rapport" name="rapport" accept=".pdf, .jpg, .jpeg, .png" required>
+                <button type="submit">Télécharger</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

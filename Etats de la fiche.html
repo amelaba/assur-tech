@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des Fiches</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f9;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    h4 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 16px;
+      color: #555;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+      color: #555;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .fiches {
+      margin-top: 30px;
+    }
+    .fiche {
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+    }
+    .nouveau {
+      background-color: #007bff;
+      color: #fff;
+    }
+    .validee {
+      background-color: #28a745;
+      color: #fff;
+    }
+    .attente-proforma {
+      background-color: #ffc107;
+      color: #333;
+    }
+    .attente-expertise {
+      background-color: #17a2b8;
+      color: #fff;
+    }
+    .paye {
+      background-color: #6f42c1;
+      color: #fff;
+    }
+    .terminee {
+      background-color: #343a40;
+      color: #fff;
+    }
+    button {
+      background: #F4A315;
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      width: 100%;
+      margin-top: 10px; 
+    }
+
+    button:hover {
+      background: #e09412;
+      transform: scale(1.05);
+    }
+
+    .btn-back {
+      margin-top: 2rem;
+      display: inline-block;
+      text-decoration: none;
+      color: #18233D;
+      background: #F4A315;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .btn-back:hover {
+      background: #e09412;
+    }
+
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .back-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #ffae00;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-button:hover {
+      background-color: #0056b3;
+    }
+
+    .back-button::before {
+      content: "←"; /* السهم */
+      font-size: 20px;
+    }
+
+    /* Styles pour la vue utilisateur */
+    .user-view {
+      margin-top: 30px;
+    }
+    .fiche-user {
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+      text-align: center;
+    }
+    .nouveau-user {
+      background-color: #007bff;
+      color: #fff;
+    }
+    .validee-user {
+      background-color: #28a745;
+      color: #fff;
+    }
+    .attente-proforma-user {
+      background-color: #ffc107;
+      color: #333;
+    }
+    .attente-expertise-user {
+      background-color: #17a2b8;
+      color: #fff;
+    }
+    .paye-user {
+      background-color: #6f42c1;
+      color: #fff;
+    }
+    .terminee-user {
+      background-color: #343a40;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+    <button class="back-button" onclick="goBack()"></button>
+
+    <div class="container">
+      <h1>Gestion des Fiches</h1>
+      <h4>ADMIN VIEW</h4>
+      <label for="ficheName">Nom de la fiche :</label>
+      <input type="text" id="ficheName" placeholder="Entrez le nom de la fiche">
+
+      <label for="etat">Choisissez l'état de la fiche :</label>
+      <select id="etat">
+        <option value="nouveau">Nouveau: La fiche vient d'être créée</option>
+        <option value="validee">Validée: Le sinistre est validé par l’assurance</option>
+        <option value="attente-proforma">En attente de proforma</option>
+        <option value="attente-expertise">En attente d’expertise</option>
+        <option value="paye">Payé: Dès la remise du chèque</option>
+        <option value="terminee">Terminée: Prise des photos après réparation</option>
+      </select>
+
+      <button id="addFiche">Ajouter la fiche</button>
+
+      <div class="fiches" id="fichesContainer">
+        <!-- Les fiches seront affichées ici -->
+      </div>
+    </div>
+
+    <!-- Vue utilisateur (affiche seulement la fiche sélectionnée) -->
+    <div class="container user-view" id="userViewContainer">
+      <h4>USER VIEW</h4>
+      <div class="fiche-user" id="userFicheContainer">
+        <!-- La fiche sera affichée ici -->
+      </div>
+    </div>
+
+    <script>
+      const fichesContainer = document.getElementById('fichesContainer');
+      const addFicheButton = document.getElementById('addFiche');
+      const ficheNameInput = document.getElementById('ficheName');
+      const etatSelect = document.getElementById('etat');
+      const userViewContainer = document.getElementById('userViewContainer');
+      const userFicheContainer = document.getElementById('userFicheContainer');
+
+      addFicheButton.addEventListener('click', () => {
+        const ficheName = ficheNameInput.value.trim();
+        const etat = etatSelect.value;
+        const etatText = etatSelect.options[etatSelect.selectedIndex].text;
+
+        if (!ficheName) {
+          alert('Veuillez entrer un nom pour la fiche.');
+          return;
+        }
+
+        // Créer un élément pour afficher la fiche
+        const ficheElement = document.createElement('div');
+        ficheElement.className = `fiche ${etat}`;  // Apply corresponding class for color
+        ficheElement.textContent = `${ficheName} - ${etatText}`;
+
+        // Ajouter la fiche au conteneur
+        fichesContainer.appendChild(ficheElement);
+
+        // Afficher la même fiche dans la vue utilisateur
+        const userFicheElement = document.createElement('div');
+        userFicheElement.className = `fiche-user ${etat}-user`;  // Apply corresponding class for color
+        userFicheElement.textContent = `${ficheName} - ${etatText}`;
+        userFicheContainer.innerHTML = ''; // Clear previous fiche
+        userFicheContainer.appendChild(userFicheElement);
+
+        // Réinitialiser les champs
+        ficheNameInput.value = '';
+        etatSelect.selectedIndex = 0;
+      });
+
+      function goBack() {
+          window.history.back();
+      }
+    </script>
+
+</body>
+</html>

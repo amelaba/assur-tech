@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Déclaration de Sinistre</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #e6f7ff;
+    }
+    h1 {
+      color: #020d3e;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .section-title {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #020d3e;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #F4A315;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #e09412;
+    }
+  </style>
+</head>
+<body>
+  <h1>Formulaire de Déclaration de Sinistre</h1>
+  <form action="soumettre la declaration.html" method="get">
+    <!-- Coordonnées des conducteurs -->
+    <div class="section-title">Coordonnées des Conducteurs</div>
+    <label for="conducteur1_nom">Nom et Prénom du Conducteur 1</label>
+    <input type="text" id="conducteur1_nom" name="conducteur1_nom" required>
+    
+    <label for="conducteur1_adresse">Adresse du Conducteur 1</label>
+    <input type="text" id="conducteur1_adresse" name="conducteur1_adresse" required>
+    
+    <label for="conducteur1_telephone">Numéro de Téléphone du Conducteur 1</label>
+    <input type="tel" id="conducteur1_telephone" name="conducteur1_telephone" required>
+    
+    <label for="conducteur1_permis">Numéro de Permis de Conduire et Date de Délivrance</label>
+    <input type="text" id="conducteur1_permis" name="conducteur1_permis" required>
+    
+    <!-- Informations sur les véhicules -->
+    <div class="section-title">Informations sur les Véhicules</div>
+    <label for="vehicule1_marque">Marque du Véhicule 1</label>
+    <input type="text" id="vehicule1_marque" name="vehicule1_marque" required>
+    
+    <label for="vehicule1_modele">Modèle du Véhicule 1</label>
+    <input type="text" id="vehicule1_modele" name="vehicule1_modele" required>
+    
+    <label for="vehicule1_immat">Immatriculation du Véhicule 1</label>
+    <input type="text" id="vehicule1_immat" name="vehicule1_immat" required>
+    
+    <label for="vehicule1_chassis">Numéro de Châssis du Véhicule 1</label>
+    <input type="text" id="vehicule1_chassis" name="vehicule1_chassis" required>
+    
+    <label for="assurance1_nom">Nom de la Compagnie d'Assurance du Véhicule 1</label>
+    <input type="text" id="assurance1_nom" name="assurance1_nom" required>
+    
+    <label for="assurance1_police">Numéro de Police d'Assurance du Véhicule 1</label>
+    <input type="text" id="assurance1_police" name="assurance1_police" required>
+    
+    <!-- Détails de l'accident -->
+    <div class="section-title">Détails de l'Accident</div>
+    <label for="date_accident">Date et Heure de l'Accident</label>
+    <input type="datetime-local" id="date_accident" name="date_accident" required>
+    
+    <label for="lieu_accident">Lieu de l'Accident</label>
+    <input type="text" id="lieu_accident" name="lieu_accident" required>
+    
+    <label for="conditions">Conditions Météorologiques et de Visibilité</label>
+    <textarea id="conditions" name="conditions" rows="3" required></textarea>
+    
+    <label for="dommages">Description des Dommages Matériels</label>
+    <textarea id="dommages" name="dommages" rows="3" required></textarea>
+    
+    <!-- Croquis de l'accident -->
+    <div class="section-title">Croquis de l'Accident</div>
+    <label for="croquis">Télécharger le Croquis (optionnel)</label>
+    <input type="file" id="croquis" name="croquis">
+    
+    <!-- Témoignages -->
+    <div class="section-title">Témoignages</div>
+    <label for="temoignaire_nom">Nom et Prénom du Témoin</label>
+    <input type="text" id="temoignaire_nom" name="temoignaire_nom">
+    
+    <label for="temoignaire_coordonnees">Coordonnées du Témoin</label>
+    <input type="text" id="temoignaire_coordonnees" name="temoignaire_coordonnees">
+    
+    <label for="temoignaire_declaration">Déclaration du Témoin</label>
+    <textarea id="temoignaire_declaration" name="temoignaire_declaration" rows="3"></textarea>
+    
+    <!-- Observations et désaccords -->
+    <div class="section-title">Observations et Désaccords</div>
+    <label for="observations">Observations</label>
+    <textarea id="observations" name="observations" rows="3"></textarea>
+    
+    <label for="desaccords">Désaccords (si applicable)</label>
+    <textarea id="desaccords" name="desaccords" rows="3"></textarea>
+    
+    <!-- Signatures -->
+    <div class="section-title">Signatures</div>
+    <label for="signature1">Signature du Conducteur 1</label>
+    <input type="text" id="signature1" name="signature1">
+    
+    <label for="signature2">Signature du Conducteur 2</label>
+    <input type="text" id="signature2" name="signature2">
+    
+    <!-- Bouton de soumission -->
+    <div class="button-container">
+      <button type="submit">Soumettre la Déclaration</button>
+    </div>
+  </form>
+</body>
+</html>

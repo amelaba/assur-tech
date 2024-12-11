@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soumettre Rapport d'Expertise</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+    h1 {
+      color: #020d3e;
+      text-align: center;
+    }
+    .upload-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .upload-button {
+      background-color: #007bff;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      border: none;
+    }
+    .upload-button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+    .upload-button:active {
+      transform: scale(0.95);
+    }
+    input[type="file"] {
+      display: none;
+    }
+    label {
+      cursor: pointer;
+      font-size: 18px;
+      color: #007bff;
+      text-decoration: underline;
+    }
+    .file-name {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+    .report-section {
+      margin-top: 20px;
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .report-section h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #020d3e;
+      cursor: pointer;
+    }
+    .report-section-content {
+      display: none;
+      margin-top: 10px;
+      padding-left: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .form-group textarea {
+      resize: vertical;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Soumettre Rapport d'Expertise</h1>
+  <div class="upload-container">
+    <input type="file" id="fileInput" accept=".pdf,.docx">
+    <label for="fileInput" class="upload-button">Choisir un fichier</label>
+    <p id="fileName" class="file-name">Aucun fichier choisi</p>
+  </div>
+
+  <!-- Section 1: Détails du Rapport -->
+  <div class="report-section" onclick="toggleContent('section1')">
+    <h3>Section 1: Détails du Rapport</h3>
+    <div class="report-section-content" id="section1">
+      <div class="form-group">
+        <label for="expert_name">Nom de l'Expert</label>
+        <input type="text" id="expert_name" placeholder="Entrez le nom de l'expert">
+      </div>
+      <div class="form-group">
+        <label for="expert_date">Date de l'Expertise</label>
+        <input type="date" id="expert_date">
+      </div>
+      <div class="form-group">
+        <label for="expert_type">Type de l'Expertise</label>
+        <input type="text" id="expert_type" placeholder="Entrez le type de l'expertise">
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Résumé de l'Accident -->
+  <div class="report-section" onclick="toggleContent('section2')">
+    <h3>Section 2: Résumé de l'Accident</h3>
+    <div class="report-section-content" id="section2">
+      <div class="form-group">
+        <label for="accident_location">Lieu de l'Accident</label>
+        <input type="text" id="accident_location" placeholder="Entrez le lieu de l'accident">
+      </div>
+      <div class="form-group">
+        <label for="accident_date">Date et Heure</label>
+        <input type="datetime-local" id="accident_date">
+      </div>
+      <div class="form-group">
+        <label for="weather_conditions">Conditions Météorologiques</label>
+        <input type="text" id="weather_conditions" placeholder="Entrez les conditions météorologiques">
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Observations et Conclusion -->
+  <div class="report-section" onclick="toggleContent('section3')">
+    <h3>Section 3: Observations et Conclusion</h3>
+    <div class="report-section-content" id="section3">
+      <div class="form-group">
+        <label for="observations">Observations</label>
+        <textarea id="observations" placeholder="Entrez vos observations ici"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="conclusion">Conclusion</label>
+        <textarea id="conclusion" placeholder="Entrez votre conclusion ici"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bouton de soumission -->
+  <button class="upload-button" onclick="submitForm()">Soumettre le Rapport</button>
+</div>
+
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const fileName = document.getElementById('fileName');
+
+  // Gérer la sélection de fichier
+  fileInput.addEventListener('change', (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      fileName.textContent = `Fichier choisi: ${selectedFile.name}`;
+    } else {
+      fileName.textContent = 'Aucun fichier choisi';
+    }
+  });
+
+  // Fonction pour afficher/masquer le contenu de chaque section
+  function toggleContent(sectionId) {
+    const sectionContent = document.getElementById(sectionId);
+    if (sectionContent.style.display === "block") {
+      sectionContent.style.display = "none";
+    } else {
+      sectionContent.style.display = "block";
+    }
+  }
+
+  // Fonction pour soumettre le rapport
+  function submitForm() {
+    const expertName = document.getElementById('expert_name').value;
+    const expertDate = document.getElementById('expert_date').value;
+    const expertType = document.getElementById('expert_type').value;
+    const accidentLocation = document.getElementById('accident_location').value;
+    const accidentDate = document.getElementById('accident_date').value;
+    const weatherConditions = document.getElementById('weather_conditions').value;
+    const observations = document.getElementById('observations').value;
+    const conclusion = document.getElementById('conclusion').value;
+
+    // Vérifier si tous les champs sont remplis
+    if (!expertName || !expertDate || !expertType || !accidentLocation || !accidentDate || !weatherConditions || !observations || !conclusion) {
+      alert("Veuillez remplir tous les champs avant de soumettre.");
+      return;
+    }
+
+    // Affichage de la soumission réussie
+    alert("Rapport soumis avec succès!");
+    // Vous pouvez envoyer les données au serveur ici (ex: avec une requête AJAX)
+  }
+</script>
+
+</body>
+</html>

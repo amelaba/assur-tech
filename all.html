@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background-color: #e6f7ff; /* خلفية زرقاء فاتحة */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    h1 {
+      color: #020d3e; /* لون العنوان بالأزرق الداكن */
+    }
+
+    .dashboard-container {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    
+    .dashboard-item {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    .dashboard-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .dashboard-item i {
+      font-size: 48px;
+      color: #F4A315; /* اللون الأصفر */
+    }
+    
+    .dashboard-item h3 {
+      margin: 15px 0 10px;
+      color: #020d3e; /* لون العنوان */
+    }
+    
+    .dashboard-item p {
+      color: #333;
+      font-size: 14px;
+    }
+
+    .promo {
+      background-color: #FFD700; /* لون العرض الأصفر */
+      border: 1px solid #020d3e; /* إطار بالأزرق الداكن */
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 20px;
+      text-align: center;
+      color: #020d3e;
+      font-weight: bold;
+    }
+
+    .promo:hover {
+      background-color: #FFCC00; /* تأثير hover */
+    }
+
+    .back-button {
+      margin-top: 20px;
+      text-decoration: none;
+      color: #18233D;
+      background: #F4A315;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .back-button:hover {
+      background: #e09412;
+    }
+
+    .back-button i {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Application Dashboard</h1>
+  <div class="dashboard-container">
+    
+    <div class="dashboard-item" onclick="window.location.href='convarsation.html'">
+      <i class="fas fa-robot"></i>
+      <h3>Guide d'utilisateur</h3>
+      <p>Découvrez des informations essentielles et des réponses adaptées aux utilisateurs.</p>
+    </div>
+    
+    <!-- Assurance de Voiture Section -->
+    <div class="dashboard-item" onclick="window.location.href='sinistres.html'">
+      <i class="fas fa-car-crash"></i>
+      <h3>Assurance de Voiture</h3>
+      <p>Assurez votre véhicule et gérez les sinistres facilement grâce à notre plateforme.</p>
+    </div>
+    
+    <!-- Gestion des abonnés Section -->
+    <div class="dashboard-item" onclick="window.location.href='abonne.html'">
+      <i class="fas fa-users"></i>
+      <h3>Gestion de profil</h3>
+      <p>Surveillez et administrez les abonnés pour une gestion simplifiée.</p>
+    </div>
+    
+    <!-- Gestion des compteurs Section -->
+    <div class="dashboard-item" onclick="window.location.href='compteurs.html'">
+      <i class="fas fa-tachometer-alt"></i>
+      <h3>Gestion des Compteurs</h3>
+      <p>Suivez et gérez les compteurs en temps réel pour une meilleure surveillance.</p>
+    </div>
+
+    <!-- Formulaire de Déclaration de Sinistre Section -->
+    <div class="dashboard-item" onclick="window.location.href='QR.HTML'">
+      <i class="fas fa-file-alt"></i>
+      <h3> Déclaration de Sinistre</h3>
+      <p>Remplissez et soumettez votre déclaration de sinistre rapidement.</p>
+    </div>
+
+    <!-- Scan QR Code Section -->
+    <div class="dashboard-item" onclick="window.location.href='scan_qr.html'">
+      <i class="fas fa-qrcode"></i>
+      <h3>Scan QR Code</h3>
+      <p>Scannez les codes QR pour obtenir des informations instantanées.</p>
+    </div>
+
+    <!-- Profil Section -->
+    <div class="dashboard-item" onclick="window.location.href='profile.html'">
+      <i class="fas fa-user"></i>
+      <h3>Profil</h3>
+      <p>Accédez à votre profil et gérez vos informations personnelles.</p>
+    </div>
+
+    <div class="dashboard-item" onclick="window.location.href='apresaccident.html'">
+      <i class="fas fa-exclamation-circle"></i> 
+      <h3>Après accident</h3>
+      <p>Le rapport sera envoyé à la société d'assurance, et vous recevrez les résultats par e-mail.</p>
+    </div>
+    
+    <!-- Rapport d'Expertise Section -->
+    <div class="dashboard-item" onclick="window.location.href='facteur.html'">
+      <i class="fas fa-file-alt"></i>
+      <h3>Rapport d'Expertise</h3>
+      <p>Accédez aux rapports d'expertise pour une analyse complète et détaillée.</p>
+    </div>
+    
+  </div>
+
+  <a href="index.html" class="back-button">
+    <i class="fas fa-home"></i> Retour à l'accueil
+  </a>
+</body>
+</html>

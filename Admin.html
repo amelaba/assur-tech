@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Administration</title>
+    <link rel="stylesheet" href="hii.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Connexion</h1>
+        <form id="login-form" onsubmit="return handleLogin()">
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-submit">Se connecter</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function handleLogin() {
+            // Exemple simple de vérification des identifiants
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Remplacer ces valeurs par la logique de vérification sur le serveur
+            const validUsername = 'admin';
+            const validPassword = 'admin123';
+
+            if (username === validUsername && password === validPassword) {
+                alert('Connexion réussie !');
+                window.location.href = 'Admin.html'; // Redirige vers la page d'administration
+                return false; // Empêche l'envoi du formulaire
+            } else {
+                alert('Nom d\'utilisateur ou mot de passe invalide.');
+                return false; // Empêche l'envoi du formulaire
+            }
+        }
+    </script>
+</body>
+</html>

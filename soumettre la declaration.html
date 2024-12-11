@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soumettre la Déclaration</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #e6f7ff;
+    }
+    h1 {
+      color: #020d3e;
+    }
+    .content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: auto;
+    }
+    .section-title {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #020d3e;
+    }
+    .data {
+      margin-bottom: 15px;
+    }
+    .label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    button {
+      background-color: #020d3e;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #007bff;
+    }
+    #qrcode {
+      margin: 20px auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>la Déclaration de Sinistre</h1>
+  <div class="content">
+    <div class="section-title">Coordonnées des Conducteurs</div>
+    <div class="data">
+      <div class="label">Nom et Prénom du Conducteur 1:</div>
+      <div id="conducteur1_nom"></div>
+    </div>
+    <div class="data">
+      <div class="label">Adresse du Conducteur 1:</div>
+      <div id="conducteur1_adresse"></div>
+    </div>
+    <div class="data">
+      <div class="label">Numéro de Téléphone du Conducteur 1:</div>
+      <div id="conducteur1_telephone"></div>
+    </div>
+    <div class="data">
+      <div class="label">Numéro de Permis de Conduire et Date de Délivrance:</div>
+      <div id="conducteur1_permis"></div>
+    </div>
+
+    <div class="section-title">Informations sur les Véhicules</div>
+    <div class="data">
+      <div class="label">Marque du Véhicule 1:</div>
+      <div id="vehicule1_marque"></div>
+    </div>
+    <div class="data">
+      <div class="label">Modèle du Véhicule 1:</div>
+      <div id="vehicule1_modele"></div>
+    </div>
+    <div class="data">
+      <div class="label">Immatriculation du Véhicule 1:</div>
+      <div id="vehicule1_immat"></div>
+    </div>
+    <div class="data">
+      <div class="label">Numéro de Châssis du Véhicule 1:</div>
+      <div id="vehicule1_chassis"></div>
+    </div>
+    <div class="data">
+      <div class="label">Nom de la Compagnie d'Assurance du Véhicule 1:</div>
+      <div id="assurance1_nom"></div>
+    </div>
+    <div class="data">
+      <div class="label">Numéro de Police d'Assurance du Véhicule 1:</div>
+      <div id="assurance1_police"></div>
+    </div>
+
+    <div class="section-title">Détails de l'Accident</div>
+    <div class="data">
+      <div class="label">Date et Heure de l'Accident:</div>
+      <div id="date_accident"></div>
+    </div>
+    <div class="data">
+      <div class="label">Lieu de l'Accident:</div>
+      <div id="lieu_accident"></div>
+    </div>
+    <div class="data">
+      <div class="label">Conditions Météorologiques et de Visibilité:</div>
+      <div id="conditions"></div>
+    </div>
+    <div class="data">
+      <div class="label">Description des Dommages Matériels:</div>
+      <div id="dommages"></div>
+    </div>
+
+    <div class="section-title">Témoignages</div>
+    <div class="data">
+      <div class="label">Nom et Prénom du Témoin:</div>
+      <div id="temoignaire_nom"></div>
+    </div>
+    <div class="data">
+      <div class="label">Coordonnées du Témoin:</div>
+      <div id="temoignaire_coordonnees"></div>
+    </div>
+    <div class="data">
+      <div class="label">Déclaration du Témoin:</div>
+      <div id="temoignaire_declaration"></div>
+    </div>
+
+    <div class="section-title">Observations et Désaccords</div>
+    <div class="data">
+      <div class="label">Observations:</div>
+      <div id="observations"></div>
+    </div>
+    <div class="data">
+      <div class="label">Désaccords (si applicable):</div>
+      <div id="desaccords"></div>
+    </div>
+
+  </div>
+
+  <div id="qrcode"></div>
+
+  <button onclick="window.print()">Imprimer</button>
+  <button id="generateQR">Code QR</button>
+  <button id="checkStatus">État de la fiche</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    function getParameterByName(name, url = window.location.href) {
+      name = name.replace(/[[\]]/g, '\\$&');
+      const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)', 'i');
+      const results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    const fields = [
+      'conducteur1_nom', 'conducteur1_adresse', 'conducteur1_telephone', 'conducteur1_permis',
+      'vehicule1_marque', 'vehicule1_modele', 'vehicule1_immat', 'vehicule1_chassis',
+      'assurance1_nom', 'assurance1_police', 'date_accident', 'lieu_accident',
+      'conditions', 'dommages', 'temoignaire_nom', 'temoignaire_coordonnees',
+      'temoignaire_declaration', 'observations', 'desaccords'
+    ];
+
+    fields.forEach(field => {
+      const element = document.getElementById(field);
+      if (element) {
+        element.textContent = getParameterByName(field);
+      }
+    });
+
+    document.getElementById('generateQR').addEventListener('click', () => {
+      const data = fields.reduce((acc, field) => {
+        const value = getParameterByName(field) || '';
+        return acc + `${field}: ${value}\n`;
+      }, '');
+
+      const qrcodeContainer = document.getElementById('qrcode');
+      qrcodeContainer.innerHTML = '';
+      new QRCode(qrcodeContainer, {
+        text: data,
+        width: 256,
+        height: 256
+      });
+    });
+
+    document.getElementById('checkStatus').addEventListener('click', () => {
+      const missingFields = fields.filter(field => {
+        const value = getParameterByName(field) || '';
+        return !value.trim();
+      });
+
+      if (missingFields.length > 0) {
+        alert(`Les champs suivants sont manquants ou incomplets :\n- ${missingFields.join('\n- ')}`);
+      } else {
+        window.location.href = 'Etats de la fiche.html';
+      }
+    });
+  </script>
+</body>
+</html>

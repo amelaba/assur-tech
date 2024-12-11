@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Profil</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <button class="back-button" onclick="goBack()">Retour</button>
+
+    <header>
+        <h1 class="animate-header">Profil Utilisateur</h1>
+    </header>
+
+    <main>
+        <section id="profil" class="animate-section">
+            <div class="profile-header">
+                <div class="profile-pic-container">
+                    <img src="default-pic.jpg" alt="Photo de profil" class="profile-pic" id="profile-pic">
+                    <input type="file" id="profile-pic-upload" accept="image/*" onchange="updateProfilePic()">
+                    <label for="profile-pic-upload" class="upload-label">Ajouter une image</label>
+                </div>
+                <h2>Nom de l'utilisateur</h2>
+                <p class="bio">Développeur web, passionné par les nouvelles technologies.</p>
+            </div>
+
+            <div class="profile-details">
+                <h3>Détails du Profil</h3>
+                <ul>
+                    <li><strong>Email:</strong> <input type="email" placeholder="Entrez votre email"></li>
+                    <li><strong>Téléphone:</strong> <input type="tel" placeholder="Entrez votre téléphone"></li>
+                    <li><strong>Lieu:</strong> <input type="text" placeholder="Entrez votre lieu"></li>
+                </ul>
+            </div>
+
+            <div class="fingerprint">
+                <h3>Ajouter votre empreinte digitale</h3>
+                <input type="file" id="fingerprint-upload" accept="image/*">
+                <label for="fingerprint-upload" class="upload-label">Télécharger une empreinte</label>
+            </div>
+
+            <div class="security-policy">
+                <h3><i class="fas fa-shield-alt"></i> Politique de sécurité</h3>
+                <p>
+                    Nous prenons la sécurité de vos informations très au sérieux. Assurez-vous de respecter nos consignes pour garantir un environnement sécurisé.
+                </p>
+                <button>Voir la politique complète</button>
+            </div>
+
+            <div class="password-section">
+                <h3><i class="fas fa-lock"></i> Changer le mot de passe</h3>
+                <input type="password" placeholder="Entrez votre mot de passe actuel">
+                <input type="password" placeholder="Nouveau mot de passe">
+                <input type="password" placeholder="Confirmer le nouveau mot de passe">
+                <button>Mettre à jour le mot de passe</button>
+            </div>
+
+            <div class="profile-footer">
+                <button>Modifier le Profil</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Application de gestion</p>
+    </footer>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function updateProfilePic() {
+            const fileInput = document.getElementById('profile-pic-upload');
+            const profilePic = document.getElementById('profile-pic');
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profilePic.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

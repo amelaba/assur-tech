@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <button class="back-button" onclick="goBack()"></button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GUID D'etulisateur </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="conversation.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h2>Guid d'utilisateur <i class="fas fa-robot"></i></h2>
+    </div>
+    <div class="chat-box" id="chat-box"></div>
+    <div class="suggested-questions" id="suggested-questions">
+      <h4>Suggestions:</h4>
+      <ul>
+        <li class="question-option">What is your name?</li>
+        <li class="question-option">What should I do if there are witnesses?</li>
+        <li class="question-option">What are personal details needed?</li>
+        <li class="question-option">When should the contract start?</li>
+      </ul>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Type your message...">
+      <button id="send-btn">Send <i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <a href="index.html" class="btn-back">Retour à l'accueil</a>
+  <script src="chat.js"></script>
+  
+  <script>
+    function goBack() {
+        window.history.back();
+    }
+  </script>
+</body>
+</html>

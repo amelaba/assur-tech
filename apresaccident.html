@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparer les Images</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #18233D;
+            color: #F4A315;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #263B59;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 2px solid #F4A315;
+            background-color: #18233D;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #F4A315;
+            color: #18233D;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .message {
+            margin-top: 20px;
+            background-color: #263B59;
+            padding: 15px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        /* Animation CSS */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Comparer les images : Avant et Après l'accident</h1>
+
+    <p>Une image avant l'accident existe déjà. Veuillez télécharger l'image après l'accident pour la comparer.</p>
+
+    <!-- Formulaire pour télécharger l'image après l'accident -->
+    <form action="/compare" method="post" enctype="multipart/form-data">
+        <label for="image"><i class="fas fa-image"></i> Choisissez une image après l'accident :</label>
+        <input type="file" name="image" id="image" accept="image/*" required>
+        <button type="submit"><i class="fas fa-upload"></i> Télécharger et Comparer</button>
+    </form>
+
+    <!-- Message après le téléchargement -->
+    <div class="message">
+        <p><i class="fas fa-paper-plane"></i> Le rapport sera envoyé à la société d'assurance, et vous recevrez les résultats par e-mail.</p>
+    </div>
+
+</body>
+</html>

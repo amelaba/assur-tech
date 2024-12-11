@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des compteurs</title>
+    <link rel="stylesheet" href="compteurs.css">
+</head>
+<body>
+    <header>
+        <h1>Gestion des compteurs</h1>
+    </header>
+    <main>
+        <section id="compteurs">
+            <form id="compteurs-form">
+                <label for="pdl">Numéro PDL/PCE:</label>
+                <input type="text" id="pdl" name="pdl" required>
+
+                <label for="releve">Relevé actuel:</label>
+                <input type="number" id="releve" name="releve" required>
+
+                <label for="photo">Joindre une photo:</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
+
+                <button type="submit">Ajouter relevé</button>
+            </form>
+            <div id="historique-releves">
+                <h3>Historique des relevés</h3>
+                <ul id="releves-list"></ul>
+            </div>
+        </section>
+    </main>
+    <a href="index.html" class="btn-back">Retour à l'accueil</a>
+
+    <footer>
+        <p>&copy; 2024 Application de gestion</p>
+    </footer>
+</body>
+</html>
